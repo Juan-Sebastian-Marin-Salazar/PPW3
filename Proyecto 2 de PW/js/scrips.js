@@ -2,19 +2,44 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lógica del catálogo y carrito de compras
     if (document.getElementById("catalogo")) {
         const catalogo = [
-            { id: 1, Nombre: "Ride on Time", imagen: "../img/Img_menu/Category 1 img 1.jpg", precio: 120, descripcion: "Un roll vibrante con atún fresco, mango dulce y una salsa especial de la casa que realza los sabores tropicales." },
-            { id: 2, Nombre: "Silent Screamer", imagen: "../img/Img_menu/Category 1 img 2.png", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter." },
-            { id: 3, Nombre: "Your Eyes", imagen: "../img/Img_menu/Category 1 img 3.png", precio: 200, descripcion: "Ramen shoyu con caldo de soya, hongos shiitake, bambú y fideos artesanales, perfecto para reconfortar el alma en un día lluvioso." },
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter." }
+            { id: 1, Nombre: "Ride on Time", imagen: "../img/Img_menu/Category 1 img 1.jpg", precio: 120, descripcion: "Un roll vibrante con atún fresco, mango dulce y una salsa especial de la casa que realza los sabores tropicales.", categoria: "Sushi y Sashimi"},
+            { id: 2, Nombre: "Silent Screamer", imagen: "../img/Img_menu/Category 1 img 2.png", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 3, Nombre: "Your Eyes", imagen: "../img/Img_menu/Category 1 img 3.png", precio: 200, descripcion: "Ramen shoyu con caldo de soya, hongos shiitake, bambú y fideos artesanales, perfecto para reconfortar el alma en un día lluvioso.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 5, Nombre: "Dream in the Screen (DS)", imagen: "../img/Img_menu/Category 1 img 5.jpg", precio: 140, descripcion: "Roll crujiente relleno de tempura de camarón, pepino y un toque de mayonesa picante, ideal para quienes buscan una mezcla perfecta de textura y sabor.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
+
         ];
 
         const catalogoContainer = document.getElementById("catalogo");
         const resumenCompra = document.getElementById("resumenCompra");
         const total = document.getElementById("total");
         const carrito = [];
+        const categoriahtml = document.createElement("div");
+
+        let categoriaActual = "";
 
         // Genera las tarjetas de productos en el catálogo
         catalogo.forEach((producto) => {
+
+            if (categoriaActual !== producto.categoria) {
+                categoriaActual = producto.categoria;
+                
+                const categoriahtml = document.createElement("div");
+                categoriahtml.classList.add("categoria");
+                categoriahtml.innerHTML = `<h2>${producto.categoria}</h2><br>`;
+        
+                catalogoContainer.appendChild(categoriahtml);
+            }
+
             const card = document.createElement("div");
             card.classList.add("col-md-3", "mb-4");
 
@@ -81,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         botonFinalizarCompra.addEventListener("click", function () {
             localStorage.setItem("carrito", JSON.stringify(carrito));
-            localStorage.setItem("total", total.textContent);
+            sessionStorage.setItem("total", total.textContent);
             window.location.href = "recibo.html";
         });
     }
@@ -98,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lógica de la página de recibo (recibo.html)
     if (document.getElementById("resumenCompraRecibo")) {
         const carrito = JSON.parse(localStorage.getItem("carrito"));
-        const total = localStorage.getItem("total");
+        const total = sessionStorage.getItem("total");
 
         const resumenCompraRecibo = document.getElementById("resumenCompraRecibo");
         const totalRecibo = document.getElementById("totalRecibo");

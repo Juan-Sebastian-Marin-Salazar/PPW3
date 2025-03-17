@@ -602,6 +602,7 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.3s ease;
+    min-height: 550px;
 }
 
 .item:hover {
@@ -622,7 +623,7 @@ h1 {
 }
 
 .item p {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
     color: #666;
 }
 
