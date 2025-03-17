@@ -414,19 +414,34 @@ document.addEventListener("DOMContentLoaded", function () {
         function actualizarResumenCompra() {
             resumenCompra.innerHTML = "";
             let subtotalTotal = 0;
-
-            carrito.forEach((item) => {
+        
+            carrito.forEach((item, index) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
                     <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
+                    <td><button class="btn-eliminar" data-index="${index}">X</button></td>
                 `;
                 resumenCompra.appendChild(fila);
                 subtotalTotal += item.producto.precio * item.cantidad;
             });
-
+        
             total.textContent = `$${subtotalTotal}`;
+        
+            // Agrega eventos de clic a los botones de eliminación
+            const botonesEliminar = document.querySelectorAll(".btn-eliminar");
+            botonesEliminar.forEach((boton) => {
+                boton.addEventListener("click", function () {
+                    const index = this.getAttribute("data-index");
+                    eliminarProductoDelCarrito(index);
+                });
+            });
+        }
+        
+        function eliminarProductoDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarResumenCompra();
         }
 
         // Botón para finalizar la compra
