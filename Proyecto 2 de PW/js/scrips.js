@@ -2,21 +2,349 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lógica del catálogo y carrito de compras
     if (document.getElementById("catalogo")) {
         const catalogo = [
-            { id: 1, Nombre: "Ride on Time", imagen: "../img/Img_menu/Category 1 img 1.jpg", precio: 120, descripcion: "Un roll vibrante con atún fresco, mango dulce y una salsa especial de la casa que realza los sabores tropicales.", categoria: "Sushi y Sashimi"},
-            { id: 2, Nombre: "Silent Screamer", imagen: "../img/Img_menu/Category 1 img 2.png", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 3, Nombre: "Your Eyes", imagen: "../img/Img_menu/Category 1 img 3.png", precio: 200, descripcion: "Ramen shoyu con caldo de soya, hongos shiitake, bambú y fideos artesanales, perfecto para reconfortar el alma en un día lluvioso.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 5, Nombre: "Dream in the Screen (DS)", imagen: "../img/Img_menu/Category 1 img 5.jpg", precio: 140, descripcion: "Roll crujiente relleno de tempura de camarón, pepino y un toque de mayonesa picante, ideal para quienes buscan una mezcla perfecta de textura y sabor.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-            { id: 4, Nombre: "Plastic Love", imagen: "../img/Img_menu/Category 1 img 4.jpg", precio: 140, descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.", categoria: "Sushi y Sashimi"},
-
+            // Sushi y Sashimi
+            {
+                id: 1,
+                nombre: "Ride on Time",
+                descripcion: "Un roll vibrante con atún fresco, mango dulce y una salsa especial de la casa que realza los sabores tropicales. Perfecto.",
+                precio: 220.00,
+                imagen: "../img/Img_Menu/Category 1 img 1.jpg",
+                categoria: "Sushi y Sashimi"
+            },
+            {
+                id: 2,
+                nombre: "Silent Screamer",
+                descripcion: "Nigiri de anguila glaseada con salsa teriyaki casera y un toque de wasabi, una combinación intensa y llena de carácter.",
+                precio: 190.00,
+                imagen: "../img/Img_Menu/Category 1 img 2.png",
+                categoria: "Sushi y Sashimi"
+            },
+            {
+                id: 3,
+                nombre: "Your Eyes",
+                descripcion: "Delicado sashimi surtido con cortes seleccionados de atún, salmón y hamachi, servidos sobre hielo para una experiencia fresca y auténtica.",
+                precio: 250.00,
+                imagen: "../img/Img_Menu/Category 1 img 3.png",
+                categoria: "Sushi y Sashimi"
+            },
+            {
+                id: 4,
+                nombre: "Plastic Love",
+                descripcion: "Un sofisticado roll de salmón ahumado, queso crema y aguacate, envuelto en alga nori y acompañado de una reducción de soya y miel.",
+                precio: 200.00,
+                imagen: "../img/Img_Menu/Category 1 img 4.jpg",
+                categoria: "Sushi y Sashimi"
+            },
+            {
+                id: 5,
+                nombre: "Dream in the Screen",
+                descripcion: "Roll crujiente relleno de tempura de camarón, pepino y un toque de mayonesa picante, ideal para quienes buscan una mezcla perfecta de textura y sabor.",
+                precio: 180.00,
+                imagen: "../img/Img_Menu/Category 1 img 5.jpg",
+                categoria: "Sushi y Sashimi"
+            },
+            {
+                id: 6,
+                nombre: "Tokai",
+                descripcion: "Roll de atún picante con pepino y cebollín, cubierto con un ligero toque de salsa sriracha. Un platillo inspirado en la intensidad y energía de la ciudad.",
+                precio: 210.00,
+                imagen: "../img/Img_Menu/Category 1 img 6.jpg",
+                categoria: "Sushi y Sashimi"
+            },
+            {
+                id: 7,
+                nombre: "Machi no Dorufin",
+                descripcion: "Un roll refrescante con pulpo, pepino y cebolla morada, acompañado de salsa ponzu y ajonjolí tostado.",
+                precio: 230.00,
+                imagen: "../img/Img_Menu/Category 1 img 7.jpeg",
+                categoria: "Sushi y Sashimi"
+            },
+        
+            // Platos Fuertes
+            {
+                id: 8,
+                nombre: "Daydream",
+                descripcion: "Ramen tonkotsu con un caldo cremoso cocinado por horas, acompañado de chashu de cerdo, huevo marinado y cebollín fresco. Un sueño hecho realidad en cada sorbo.",
+                precio: 240.00,
+                imagen: "../img/Img_Menu/Category 2 img 1.jpg",
+                categoria: "Platos Fuertes"
+            },
+            {
+                id: 9,
+                nombre: "Rainy Day",
+                descripcion: "Ramen shoyu con caldo de soya, hongos shiitake, bambú y fideos artesanales, perfecto para reconfortar el alma en un día lluvioso.",
+                precio: 220.00,
+                imagen: "../img/Img_Menu/Category 2 img 2.png",
+                categoria: "Platos Fuertes"
+            },
+            {
+                id: 10,
+                nombre: "Magic Ways",
+                descripcion: "Udon en un caldo miso con tofu sedoso, alga wakame y un toque de jengibre. Suave, envolvente y lleno de umami.",
+                precio: 210.00,
+                imagen: "../img/Img_Menu/Category 2 img 3.png",
+                categoria: "Platos Fuertes"
+            },
+            {
+                id: 11,
+                nombre: "I Love You",
+                descripcion: "Yakisoba salteado al wok con vegetales frescos, carne de res y una mezcla especial de salsas dulces y saladas. Un platillo que se siente como un abrazo.",
+                precio: 230.00,
+                imagen: "../img/Img_Menu/Category 2 img 4.jpg",
+                categoria: "Platos Fuertes"
+            },
+            {
+                id: 12,
+                nombre: "Morning Glory",
+                descripcion: "Omurice: arroz salteado con salsa de tomate envuelto en una tortilla esponjosa, servido con un toque de salsa demi-glace. Un clásico desayuno japonés.",
+                precio: 190.00,
+                imagen: "../img/Img_Menu/Category 2 img 5.jpg",
+                categoria: "Platos Fuertes"
+            },
+            {
+                id: 13,
+                nombre: "Hatsu Koi",
+                descripcion: "Gyudon: un tazón de arroz cubierto con finas láminas de res cocidas a fuego lento en una salsa de soya y mirin. Suave y nostálgico, como un primer amor.",
+                precio: 220.00,
+                imagen: "../img/Img_Menu/Category 2 img 6.png",
+                categoria: "Platos Fuertes"
+            },
+            {
+                id: 14,
+                nombre: "Step Into The Light",
+                descripcion: "Yakitori: brochetas de pollo a la parrilla, marinadas en una salsa dulce y salada, servidas con un toque de cebollín fresco.",
+                precio: 170.00,
+                imagen: "../img/Img_Menu/Category 2 img 7.jpg",
+                categoria: "Platos Fuertes"
+            },
+        
+            // Donburis y Especialidades
+            {
+                id: 15,
+                nombre: "Beleza Pula",
+                descripcion: "Katsudon: chuleta de cerdo empanizada y bañada en una mezcla de huevo y salsa dashi, servida sobre arroz caliente. Un platillo energético y lleno de sabor.",
+                precio: 230.00,
+                imagen: "../img/Img_Menu/Category 3 img 1.jpg",
+                categoria: "Donburis y Especialidades"
+            },
+            {
+                id: 16,
+                nombre: "Sparkle",
+                descripcion: "Chirashi don: una selección de sashimi fresco servido sobre un lecho de arroz de sushi, decorado con huevas de salmón y alga nori. Una experiencia brillante en cada bocado.",
+                precio: 260.00,
+                imagen: "../img/Img_Menu/Category 3 img 2.jpg",
+                categoria: "Donburis y Especialidades"
+            },
+            {
+                id: 17,
+                nombre: "Someday",
+                descripcion: "Filete de salmón glaseado con teriyaki, acompañado de arroz y ensalada de pepino japonés. Un platillo reconfortante que deja huella.",
+                precio: 280.00,
+                imagen: "../img/Img_Menu/Category 3 img 3.jpg",
+                categoria: "Donburis y Especialidades"
+            },
+            {
+                id: 18,
+                nombre: "Bay City",
+                descripcion: "Tonkatsu: crujiente chuleta de cerdo empanizada, servida con salsa especial de la casa, repollo rallado y arroz japonés.",
+                precio: 210.00,
+                imagen: "../img/Img_Menu/Category 3 img 4.jpg",
+                categoria: "Donburis y Especialidades"
+            },
+            {
+                id: 19,
+                nombre: "Breezin",
+                descripcion: "Takoyaki: esferas de masa crujiente rellenas de pulpo, cubiertas con salsa tonkatsu, mayonesa japonesa y copos de bonito seco. Una explosión de sabor.",
+                precio: 180.00,
+                imagen: "../img/Img_Menu/Category 3 img 5.jpg",
+                categoria: "Donburis y Especialidades"
+            },
+            {
+                id: 20,
+                nombre: "Summer Connection",
+                descripcion: "Poke bowl con salmón marinado, aguacate, edamames y arroz sushi, aliñado con un toque de salsa de sésamo. Ligero y refrescante, perfecto para los días cálidos.",
+                precio: 250.00,
+                imagen: "../img/Img_Menu/Category 3 img 6.png",
+                categoria: "Donburis y Especialidades"
+            },
+            {
+                id: 21,
+                nombre: "Carnaval",
+                descripcion: "Tempura de camarón y verduras, rebozado en una masa ligera y crujiente, servido con salsa tentsuyu casera.",
+                precio: 200.00,
+                imagen: "../img/Img_Menu/Category 3 img 7.png",
+                categoria: "Donburis y Especialidades"
+            },
+        
+            // Postres
+            {
+                id: 22,
+                nombre: "Candy Hearts",
+                descripcion: "Dorayaki: esponjosos panqueques japoneses rellenos de crema de fresa y frijol dulce. Un postre nostálgico y reconfortante.",
+                precio: 120.00,
+                imagen: "../img/Img_Menu/Category 4 img 1.jpg",
+                categoria: "Postres"
+            },
+            {
+                id: 23,
+                nombre: "Lovers Paradise",
+                descripcion: "Mochi de helado con sabores variados: matcha, fresa y vainilla, cubiertos con una ligera capa de arroz glutinoso. Suaves y dulces, ideales para compartir.",
+                precio: 140.00,
+                imagen: "../img/Img_Menu/Category 4 img 2.jpg",
+                categoria: "Postres"
+            },
+            {
+                id: 24,
+                nombre: "Shyness Boy",
+                descripcion: "Cheesecake japonés, ligero y esponjoso, con un toque de miel y frutos rojos.",
+                precio: 130.00,
+                imagen: "../img/Img_Menu/Category 4 img 3.jpg",
+                categoria: "Postres"
+            },
+            {
+                id: 25,
+                nombre: "Summer Blue",
+                descripcion: "Taiyaki crujiente relleno de crema de matcha y chocolate blanco.",
+                precio: 110.00,
+                imagen: "../img/Img_Menu/Category 4 img 4.jpg",
+                categoria: "Postres"
+            },
+            {
+                id: 26,
+                nombre: "Midnight Pretenders",
+                descripcion: "Helado de sésamo negro, con una textura cremosa y un sabor profundo y elegante.",
+                precio: 140.00,
+                imagen: "../img/Img_Menu/Category 4 img 5.jpg",
+                categoria: "Postres"
+            },
+            {
+                id: 27,
+                nombre: "Please Let Me Wonder (PleWo)",
+                descripcion: "Helado de vainilla con miel y almendras caramelizadas, servido con un toque de canela.",
+                precio: 130.00,
+                imagen: "../img/Img_Menu/Category 4 img 6.jpg",
+                categoria: "Postres"
+            },
+            {
+                id: 28,
+                nombre: "Long Kiss Good Bye",
+                descripcion: "Parfait de frutas con capas de crema batida, granola crujiente y un toque de jarabe de yuzu.",
+                precio: 150.00,
+                imagen: "../img/Img_Menu/Category 4 img 7.jpeg",
+                categoria: "Postres"
+            },
+            {
+                id: 29,
+                nombre: "Windy Summer",
+                descripcion: "Té matcha frío con leche y un toque de miel, refrescante y cremoso.",
+                precio: 90.00,
+                imagen: "../img/Img_Menu/Category 5 img 1.jpg",
+                categoria: "Bebidas"
+            },
+            {
+                id: 30,
+                nombre: "September",
+                descripcion: "Coctel de umeshu con soda y limón, un licor de ciruela japonés con un toque efervescente.",
+                precio: 120.00,
+                imagen: "../img/Img_Menu/Category 5 img 2.jpg",
+                categoria: "Bebidas"
+            },
+            {
+                id: 31,
+                nombre: "Midnight Cruisin",
+                descripcion: "Café japonés con un toque de licor de amaretto, perfecto para noches largas.",
+                precio: 130.00,
+                imagen: "../img/Img_Menu/Category 5 img 3.jpg",
+                categoria: "Bebidas"
+            },
+            {
+                id: 32,
+                nombre: "Hot Stuff",
+                descripcion: "Ginger ale con limón y un toque de jarabe de chile, burbujeante y con un ligero picante.",
+                precio: 100.00,
+                imagen: "../img/Img_Menu/Category 5 img 4.png",
+                categoria: "Bebidas"
+            },
+            {
+                id: 33,
+                nombre: "Miss You, Miss Me",
+                descripcion: "Batido de plátano y miel, cremoso y reconfortante.",
+                precio: 90.00,
+                imagen: "../img/Img_Menu/Category 5 img 5.jpg",
+                categoria: "Bebidas"
+            },
+            {
+                id: 34,
+                nombre: "Springin Night",
+                descripcion: "Frappe de matcha con leche condensada, ideal para una noche tranquila.",
+                precio: 110.00,
+                imagen: "../img/Img_Menu/Category 5 img 6.jpg",
+                categoria: "Bebidas"
+            },
+            {
+                id: 35,
+                nombre: "I Can't Stop the Loneliness",
+                descripcion: "Coctel de sake con jugo de durazno, delicado y afrutado.",
+                precio: 140.00,
+                imagen: "../img/Img_Menu/Category 5 img 7.jpg",
+                categoria: "Bebidas"
+            },
+            {
+                id: 36,
+                nombre: "Remember Summer Days",
+                descripcion: "Té de jazmín helado con un toque de miel, evocando el verano.",
+                precio: 80.00,
+                imagen: "../img/Img_Menu/Category 5 img 8.png",
+                categoria: "Bebidas"
+            },
+            {
+                id: 37,
+                nombre: "Dress Down",
+                descripcion: "Ensalada de algas con tofu y ajonjolí, ligera y sofisticada.",
+                precio: 120.00,
+                imagen: "../img/Img_Menu/Category 6 img 1.jpg",
+                categoria: "Entradas y Extras"
+            },
+            {
+                id: 38,
+                nombre: "Wash",
+                descripcion: "Sopa de miso tradicional con alga wakame, tofu y cebollín, un clásico reconfortante.",
+                precio: 80.00,
+                imagen: "../img/Img_Menu/Category 6 img 2.png",
+                categoria: "Entradas y Extras"
+            },
+            {
+                id: 39,
+                nombre: "Loveland Island",
+                descripcion: "Edamames al vapor con sal de mar, el snack perfecto para acompañar cualquier platillo.",
+                precio: 90.00,
+                imagen: "../img/Img_Menu/Category 6 img 3.jpg",
+                categoria: "Entradas y Extras"
+            },
+            {
+                id: 40,
+                nombre: "Love Space",
+                descripcion: "Gyoza de cerdo doradas a la plancha, rellenas de carne jugosa con un toque de ajo y jengibre.",
+                precio: 140.00,
+                imagen: "../img/Img_Menu/Category 6 img 4.jpg",
+                categoria: "Entradas y Extras"
+            },
+            {
+                id: 41,
+                nombre: "Summer Goddess",
+                descripcion: "Ramune de melón, una gaseosa japonesa chispeante y refrescante.",
+                precio: 70.00,
+                imagen: "../img/Img_Menu/Category 6 img 5.png",
+                categoria: "Entradas y Extras"
+            },
+            {
+                id: 42,
+                nombre: "I'm in Love (inlove)",
+                descripcion: "Onigiri relleno de salmón o umeboshi (ciruela encurtida), envuelto en alga nori.",
+                precio: 100.00,
+                imagen: "../img/Img_Menu/Category 6 img 6.jpg",
+                categoria: "Entradas y Extras"
+            }
         ];
 
         const catalogoContainer = document.getElementById("catalogo");
@@ -47,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="item">
                     <img src="${producto.imagen}" class="card-img-top img-producto" alt="Producto ${producto.id}">
                     <div class="item-body">
-                        <h5 class="card-title">${producto.id}. ${producto.Nombre}</h5>
+                        <h4>${producto.id}. ${producto.nombre}</h4>
                         <p class="card-description">Descripcion: ${producto.descripcion}</p>
                         <p class="card-text">Precio: $${producto.precio}</p>
                         <div class="form-group">
@@ -90,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
             carrito.forEach((item) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
-                    <td>${item.producto.Nombre}</td>
+                    <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
                 `;
@@ -132,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
             carrito.forEach((item) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
-                    <td>${item.producto.Nombre}</td>
+                    <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
                 `;

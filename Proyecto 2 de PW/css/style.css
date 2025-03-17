@@ -622,6 +622,10 @@ h1 {
     color: #aa6262;
 }
 
+.item h4 {
+    color: #aa6262;
+}
+
 .item p {
     font-size: 0.9rem;
     color: #666;
@@ -809,4 +813,16 @@ button:hover {
     align-items: center;
     z-index: 1;
     }
+}
+
+
+.btn-primary{
+    background-color: #ffffff;
+    color: #d7462d;
+    border-color: #d7462d;
+}
+
+.btn-primary:hover{
+    background-color: #d7462d;
+    border: white;
 }
