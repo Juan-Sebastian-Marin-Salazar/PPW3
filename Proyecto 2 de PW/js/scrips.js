@@ -448,9 +448,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const botonFinalizarCompra = document.getElementById("finalizarCompra");
 
         botonFinalizarCompra.addEventListener("click", function () {
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-            sessionStorage.setItem("total", total.textContent);
-            window.location.href = "recibo.html";
+
+            if(carrito.length === 0) {
+                alert("No hay productos en el carrito");
+            } else {
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                sessionStorage.setItem("total", total.textContent);
+                window.location.href = "carrito.html";
+            }
         });
     }
 
