@@ -460,6 +460,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+    if(document.getElementById("calcbutton"))   {
+        document.getElementById("calcbutton").addEventListener("click", function() {
+            let container = document.getElementById("RightFloatingPanel");
+            let existingSection = document.getElementById("calculadora");
+
+            if (existingSection) {
+                // si ya existe, destruyela
+                existingSection.remove();
+            } else {
+                // Crea la seccion dinamica
+                let newSection = document.createElement("div");
+                newSection.id = "calculadora";
+
+                let calculator = document.createElement("div");
+                calculator.classList.add("calculator");
+
+                let display = document.createElement("div");
+                display.classList.add("calcDisplay");
+                display.textContent = "0";
+                
+                let buttons = document.createElement("div");
+                buttons.classList.add("buttons");
+                buttons.innerHTML = "<button>7</button> <button>8</button> <button>9</button> <button>/</button> <button>4</button> <button>5</button> <button>6</button> <button>*</button> <button>1</button> <button>2</button> <button>3</button> <button>-</button> <button>0</button> <button>C</button> <button>=</button> <button>+</button>";
+
+                calculator.appendChild(display);
+                calculator.appendChild(buttons);
+                newSection.appendChild(calculator);
+
+                // Insert it directly below the button
+                container.appendChild(newSection);
+            }
+        });
+    }
 
     // Lógica del formulario de empleo
     if (document.getElementById("empleo-form")) {

@@ -350,6 +350,55 @@ h1 {
     }
 }
 
+.fixed {
+    background-color: #af331d;
+    position: fixed;
+    top: 6em;
+    right: 1em;
+    padding: 5px;
+}
+.fixedimg {
+    max-width: 100%;
+    height: auto;
+}
+.calculator {
+    background-color: antiquewhite;
+    border-radius: 8px;
+    width: 200px;
+    padding: 10%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    
+    .display {
+    background-color: antiquewhite;
+    color: white;
+    font-size: 24px;
+    width: auto;
+    padding: 10px;
+    text-align: right;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    }
+    
+    .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 1px;
+    }
+    .buttons > button {
+        font-size: xx-large;
+        padding: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;  
+    }
 /*Galeria con tarjetas*/
 /*Inicio*/
 
