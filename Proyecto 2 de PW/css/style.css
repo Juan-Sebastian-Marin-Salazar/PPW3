@@ -826,3 +826,19 @@ button:hover {
     background-color: #d7462d;
     border: white;
 }
+
+
+.img-producto {
+    width: 100%;  
+    height: auto; 
+    max-height: 20vh; /* Ajusta el valor según tus necesidades */
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.img-producto-carrito {
+    width: 20%;  
+    height: auto; 
+    max-height: 20vh; /* Ajusta el valor según tus necesidades */
+    border-radius: 10px;
+}

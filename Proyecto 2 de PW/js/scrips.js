@@ -418,6 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
             carrito.forEach((item, index) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
+                    <td><img src="${item.producto.imagen}" class="card-img-top img-producto"></td>
                     <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
@@ -445,9 +446,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Botón para finalizar la compra
-        const botonFinalizarCompra = document.getElementById("finalizarCompra");
+        const botoncontinuarCompra = document.getElementById("continuarCompra");
 
-        botonFinalizarCompra.addEventListener("click", function () {
+        botoncontinuarCompra.addEventListener("click", function () {
 
             if(carrito.length === 0) {
                 alert("No hay productos en el carrito");
@@ -457,6 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = "carrito.html";
             }
         });
+
     }
 
     // Lógica del formulario de empleo
@@ -480,6 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
             carrito.forEach((item) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
+                    <td><img src="${item.producto.imagen}" class="img-producto-carrito"></td>
                     <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
@@ -491,5 +494,16 @@ document.addEventListener("DOMContentLoaded", function () {
             resumenCompraRecibo.innerHTML = "<tr><td colspan='3'>No hay datos de compra.</td></tr>";
             totalRecibo.textContent = "$0";
         }
+
+        const botonFinalizarCompra = document.getElementById("finalizarCompra");
+
+        botonFinalizarCompra.addEventListener("click", function () {
+
+            alert("Compra completada. Gracias por su compra.");
+            localStorage.removeItem("carrito");
+            sessionStorage.removeItem("total");
+            window.location.href = "tienda.html";
+
+        });
     }
 }); 
