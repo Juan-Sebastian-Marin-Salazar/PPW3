@@ -482,16 +482,64 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 let buttons = document.createElement("div");
                 buttons.classList.add("buttons");
-                buttons.innerHTML = "<button>7</button> <button>8</button> <button>9</button> <button>/</button> <button>4</button> <button>5</button> <button>6</button> <button>*</button> <button>1</button> <button>2</button> <button>3</button> <button>-</button> <button>0</button> <button>C</button> <button>=</button> <button>+</button>";
+                buttons.innerHTML = '<button class="calcBUttonGrid">7</button> <button class="calcBUttonGrid">8</button> <button class="calcBUttonGrid">9</button> <button class="calcBUttonGrid">/</button> <button class="calcBUttonGrid">4</button> <button class="calcBUttonGrid">5</button> <button class="calcBUttonGrid">6</button> <button class="calcBUttonGrid">*</button> <button class="calcBUttonGrid">1</button> <button class="calcBUttonGrid">2</button> <button class="calcBUttonGrid">3</button> <button class="calcBUttonGrid">-</button> <button class="calcBUttonGrid">0</button> <button class="calcBUttonGrid">C</button> <button class="calcBUttonGrid">=</button> <button class="calcBUttonGrid">+</button>';                
 
                 calculator.appendChild(display);
                 calculator.appendChild(buttons);
                 newSection.appendChild(calculator);
 
-                // Insert it directly below the button
+                // inserta dentro del panel flotante
                 container.appendChild(newSection);
+
+                container.addEventListener("click", function(event) {
+                    if (event.target.classList.contains("calcButtonGrid"))  {
+                        let buttonText = event.target.textContent;
+    
+                        if (buttonText.match(/[0-9]/)) {
+                            if (shouldClearDisplay) {
+                                calcDisplay.textContent = "";
+                                shouldClearDisplay = false;
+                            }
+                            calcDisplay.textContent += buttonText;
+                        } else if (buttonText === "C") {
+                            calcDisplay.textContent = "0";
+                            currentInput = "";
+                            currentOperator = "";
+                        } else if (buttonText === "=") {
+                            if (currentOperator && currentInput) {
+                                const result = calculate(parseFloat(currentInput), currentOperator, parseFloat(calcDisplay.textContent));
+                                calcDisplay.textContent = result;
+                                currentInput = result;
+                                currentOperator = "";
+                                shouldClearDisplay = true;
+                            }
+                            } else {
+                                currentOperator = buttonText;
+                                currentInput = calcDisplay.textContent;
+                                shouldClearDisplay = true;
+                            }
+                    }
+                });
             }
         });
+        function calculate(num1, operator, num2) {
+            switch (operator) {
+                case "+":
+                    return num1 + num2;
+                case "-":
+                    return num1 - num2;
+                case "*":
+                    return num1 * num2;
+                case "/":
+                    if (num2 !== 0) {
+                        return num1 / num2;
+                    } else {
+                    return "Error";
+                    }
+                default:
+                    return num2;
+            }
+        }
     }
 
     // Lógica del formulario de empleo
@@ -539,4 +587,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
     }
-}); 
+});
