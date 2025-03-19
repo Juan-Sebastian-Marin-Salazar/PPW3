@@ -477,49 +477,59 @@ document.addEventListener("DOMContentLoaded", function () {
                 calculator.classList.add("calculator");
 
                 let display = document.createElement("div");
+                display.id = "calcDisplay";
                 display.classList.add("calcDisplay");
                 display.textContent = "0";
                 
                 let buttons = document.createElement("div");
                 buttons.classList.add("buttons");
-                buttons.innerHTML = '<button class="calcBUttonGrid">7</button> <button class="calcBUttonGrid">8</button> <button class="calcBUttonGrid">9</button> <button class="calcBUttonGrid">/</button> <button class="calcBUttonGrid">4</button> <button class="calcBUttonGrid">5</button> <button class="calcBUttonGrid">6</button> <button class="calcBUttonGrid">*</button> <button class="calcBUttonGrid">1</button> <button class="calcBUttonGrid">2</button> <button class="calcBUttonGrid">3</button> <button class="calcBUttonGrid">-</button> <button class="calcBUttonGrid">0</button> <button class="calcBUttonGrid">C</button> <button class="calcBUttonGrid">=</button> <button class="calcBUttonGrid">+</button>';                
+                //buttons.innerHTML = '<button class="calcBUttonGrid">7</button> <button class="calcBUttonGrid">8</button> <button class="calcBUttonGrid">9</button> <button class="calcBUttonGrid">/</button> <button class="calcBUttonGrid">4</button> <button class="calcBUttonGrid">5</button> <button class="calcBUttonGrid">6</button> <button class="calcBUttonGrid">*</button> <button class="calcBUttonGrid">1</button> <button class="calcBUttonGrid">2</button> <button class="calcBUttonGrid">3</button> <button class="calcBUttonGrid">-</button> <button class="calcBUttonGrid">0</button> <button class="calcBUttonGrid">C</button> <button class="calcBUttonGrid">=</button> <button class="calcBUttonGrid">+</button>';                
 
-                calculator.appendChild(display);
-                calculator.appendChild(buttons);
-                newSection.appendChild(calculator);
-
-                // inserta dentro del panel flotante
-                container.appendChild(newSection);
-
-                container.addEventListener("click", function(event) {
-                    if (event.target.classList.contains("calcButtonGrid"))  {
-                        let buttonText = event.target.textContent;
-    
+                //se crea un array de botones con su respectivo texto
+                let buttonGrid = [];
+                let ButtonGridText = ["7","8","9","/","4","5","6","*","1","2","3","-","0","C","=","+"];
+                for (let i = 0; i < 15; i++)    {
+                    buttonGrid[i] = document.createElement("button");
+                    buttonGrid[i].classList.add("calcButtonGrid");
+                    buttonGrid[i].textContent = ButtonGridText[i];
+                }
+                
+                buttonGrid.forEach( (button) => {
+                    button.addEventListener("click", () => {
+                        const buttonText = button.textContent;
                         if (buttonText.match(/[0-9]/)) {
                             if (shouldClearDisplay) {
-                                calcDisplay.textContent = "";
+                                display.textContent = "";
                                 shouldClearDisplay = false;
                             }
-                            calcDisplay.textContent += buttonText;
+                            display.textContent += buttonText;
                         } else if (buttonText === "C") {
-                            calcDisplay.textContent = "0";
+                            display.textContent = "0";
                             currentInput = "";
                             currentOperator = "";
                         } else if (buttonText === "=") {
                             if (currentOperator && currentInput) {
-                                const result = calculate(parseFloat(currentInput), currentOperator, parseFloat(calcDisplay.textContent));
-                                calcDisplay.textContent = result;
+                                const result = calculate(parseFloat(currentInput), currentOperator, parseFloat(display.textContent));
+                                display.textContent = result;
                                 currentInput = result;
                                 currentOperator = "";
                                 shouldClearDisplay = true;
                             }
                             } else {
                                 currentOperator = buttonText;
-                                currentInput = calcDisplay.textContent;
+                                currentInput = display.textContent;
                                 shouldClearDisplay = true;
                             }
-                    }
+                    });
                 });
+                buttonGrid.forEach((button) =>  {buttons.appendChild(button)});
+
+                calculator.appendChild(display);
+                calculator.appendChild(buttons);
+                newSection.appendChild(calculator);
+                // inserta dentro del panel flotante
+                container.appendChild(newSection);
+
             }
         });
         function calculate(num1, operator, num2) {
