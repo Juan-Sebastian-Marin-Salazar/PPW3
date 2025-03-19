@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 imagen: "../img/Img_Menu/Category 1 img 7.jpeg",
                 categoria: "Sushi y Sashimi"
             },
-        
+
             // Platos Fuertes
             {
                 id: 8,
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 imagen: "../img/Img_Menu/Category 2 img 7.jpg",
                 categoria: "Platos Fuertes"
             },
-        
+
             // Donburis y Especialidades
             {
                 id: 15,
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 imagen: "../img/Img_Menu/Category 3 img 7.png",
                 categoria: "Donburis y Especialidades"
             },
-        
+
             // Postres
             {
                 id: 22,
@@ -360,11 +360,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (categoriaActual !== producto.categoria) {
                 categoriaActual = producto.categoria;
-                
+
                 const categoriahtml = document.createElement("div");
                 categoriahtml.classList.add("categoria");
                 categoriahtml.innerHTML = `<h2>${producto.categoria}</h2><br>`;
-        
+
                 catalogoContainer.appendChild(categoriahtml);
             }
 
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function actualizarResumenCompra() {
             resumenCompra.innerHTML = "";
             let subtotalTotal = 0;
-        
+
             carrito.forEach((item, index) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `
@@ -427,9 +427,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 resumenCompra.appendChild(fila);
                 subtotalTotal += item.producto.precio * item.cantidad;
             });
-        
+
             total.textContent = `$${subtotalTotal}`;
-        
+
             // Agrega eventos de clic a los botones de eliminación
             const botonesEliminar = document.querySelectorAll(".btn-eliminar");
             botonesEliminar.forEach((boton) => {
@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
         }
-        
+
         function eliminarProductoDelCarrito(index) {
             carrito.splice(index, 1);
             actualizarResumenCompra();
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         botoncontinuarCompra.addEventListener("click", function () {
 
-            if(carrito.length === 0) {
+            if (carrito.length === 0) {
                 alert("No hay productos en el carrito");
             } else {
                 localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -460,78 +460,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
-    if(document.getElementById("calcbutton"))   {
-        document.getElementById("calcbutton").addEventListener("click", function() {
-            let container = document.getElementById("RightFloatingPanel");
-            let existingSection = document.getElementById("calculadora");
 
-            if (existingSection) {
-                // si ya existe, destruyela
-                existingSection.remove();
-            } else {
-                // Crea la seccion dinamica
-                let newSection = document.createElement("div");
-                newSection.id = "calculadora";
+    if (document.getElementById("calcbutton")) {
+        const calcButton = document.getElementById('calcbutton');
+        const calculator = document.getElementById('calculator');
 
-                let calculator = document.createElement("div");
-                calculator.classList.add("calculator");
 
-                let display = document.createElement("div");
-                display.id = "calcDisplay";
-                display.classList.add("calcDisplay");
-                display.textContent = "0";
-                
-                let buttons = document.createElement("div");
-                buttons.classList.add("buttons");
-                //buttons.innerHTML = '<button class="calcBUttonGrid">7</button> <button class="calcBUttonGrid">8</button> <button class="calcBUttonGrid">9</button> <button class="calcBUttonGrid">/</button> <button class="calcBUttonGrid">4</button> <button class="calcBUttonGrid">5</button> <button class="calcBUttonGrid">6</button> <button class="calcBUttonGrid">*</button> <button class="calcBUttonGrid">1</button> <button class="calcBUttonGrid">2</button> <button class="calcBUttonGrid">3</button> <button class="calcBUttonGrid">-</button> <button class="calcBUttonGrid">0</button> <button class="calcBUttonGrid">C</button> <button class="calcBUttonGrid">=</button> <button class="calcBUttonGrid">+</button>';                
-
-                //se crea un array de botones con su respectivo texto
-                let buttonGrid = [];
-                let ButtonGridText = ["7","8","9","/","4","5","6","*","1","2","3","-","0","C","=","+"];
-                for (let i = 0; i < 15; i++)    {
-                    buttonGrid[i] = document.createElement("button");
-                    buttonGrid[i].classList.add("calcButtonGrid");
-                    buttonGrid[i].textContent = ButtonGridText[i];
-                }
-                
-                buttonGrid.forEach( (button) => {
-                    button.addEventListener("click", () => {
-                        const buttonText = button.textContent;
-                        if (buttonText.match(/[0-9]/)) {
-                            if (shouldClearDisplay) {
-                                display.textContent = "";
-                                shouldClearDisplay = false;
-                            }
-                            display.textContent += buttonText;
-                        } else if (buttonText === "C") {
-                            display.textContent = "0";
-                            currentInput = "";
-                            currentOperator = "";
-                        } else if (buttonText === "=") {
-                            if (currentOperator && currentInput) {
-                                const result = calculate(parseFloat(currentInput), currentOperator, parseFloat(display.textContent));
-                                display.textContent = result;
-                                currentInput = result;
-                                currentOperator = "";
-                                shouldClearDisplay = true;
-                            }
-                            } else {
-                                currentOperator = buttonText;
-                                currentInput = display.textContent;
-                                shouldClearDisplay = true;
-                            }
-                    });
-                });
-                buttonGrid.forEach((button) =>  {buttons.appendChild(button)});
-
-                calculator.appendChild(display);
-                calculator.appendChild(buttons);
-                newSection.appendChild(calculator);
-                // inserta dentro del panel flotante
-                container.appendChild(newSection);
-
-            }
+        // Alterna la visibilidad de la calculadora
+        calcButton.addEventListener('click', () => {
+            calculator.style.display = calculator.style.display === 'flex' ? 'none' : 'flex';
         });
+
+        const display = document.querySelector(".display");
+        const buttons = document.querySelectorAll("button");
+
+        let currentInput = "";
+        let currentOperator = "";
+        let shouldClearDisplay = false;
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const buttonText = button.textContent;
+
+                if (buttonText.match(/[0-9]/)) {
+                    if (shouldClearDisplay) {
+                        display.textContent = "";
+                        shouldClearDisplay = false;
+                    }
+                    display.textContent += buttonText;
+                } else if (buttonText === "C") {
+                    display.textContent = "0";
+                    currentInput = "";
+                    currentOperator = "";
+                } else if (buttonText === "=") {
+                    if (currentOperator && currentInput) {
+                        const result = calculate(parseFloat(currentInput), currentOperator, parseFloat(display.textContent));
+                        display.textContent = result;
+                        currentInput = result;
+                        currentOperator = "";
+                        shouldClearDisplay = true;
+                    }
+                } else {
+                    currentOperator = buttonText;
+                    currentInput = display.textContent;
+                    shouldClearDisplay = true;
+                }
+            });
+        });
+
         function calculate(num1, operator, num2) {
             switch (operator) {
                 case "+":
@@ -544,17 +520,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (num2 !== 0) {
                         return num1 / num2;
                     } else {
-                    return "Error";
+                        return "Error";
                     }
+                case "%des":
+                    return num1-(num1*(num2/100));
                 default:
                     return num2;
             }
         }
     }
 
+
     // Lógica del formulario de empleo
     if (document.getElementById("empleo-form")) {
-        document.getElementById("empleo-form").addEventListener("submit", function(event) {
+        document.getElementById("empleo-form").addEventListener("submit", function (event) {
             event.preventDefault(); // Evita el envío real del formulario
             document.getElementById("mensaje-exito").classList.remove("oculto");
             this.reset(); // Limpia los campos después de enviar
