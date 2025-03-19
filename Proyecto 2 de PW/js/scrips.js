@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const card = document.createElement("div");
-            card.classList.add("col-md-3", "mb-4");
+            card.classList.add("col-md-6", "col-lg-3", "mb-4");
 
             card.innerHTML = `
                 <div class="item">
