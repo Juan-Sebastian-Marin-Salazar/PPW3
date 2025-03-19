@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         const display = document.querySelector(".display");
-        const buttons = document.querySelectorAll("button");
+        const buttons = document.querySelectorAll(".botoncal");
 
         let currentInput = "";
         let currentOperator = "";
