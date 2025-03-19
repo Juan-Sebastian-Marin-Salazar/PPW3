@@ -356,6 +356,8 @@ h1 {
     top: 6em;
     right: 1em;
     padding: 5px;
+    border-radius: 9px;
+
 }
 .fixedimg {
     max-width: 100%;
