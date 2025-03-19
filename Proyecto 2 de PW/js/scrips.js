@@ -351,7 +351,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const resumenCompra = document.getElementById("resumenCompra");
         const total = document.getElementById("total");
         const carrito = [];
-        const categoriahtml = document.createElement("div");
 
         let categoriaActual = "";
 
