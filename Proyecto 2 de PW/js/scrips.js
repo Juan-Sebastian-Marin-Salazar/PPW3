@@ -533,12 +533,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lógica del formulario de empleo
     if (document.getElementById("empleo-form")) {
-        document.getElementById("empleo-form").addEventListener("submit", function (event) {
+        document.getElementById("empleo-form").addEventListener("submit", function(event) {
             event.preventDefault(); // Evita el envío real del formulario
             document.getElementById("mensaje-exito").classList.remove("oculto");
             this.reset(); // Limpia los campos después de enviar
         });
-    }
+    });
+    
+    
+    
 
     // Lógica de la página de recibo (recibo.html)
     if (document.getElementById("resumenCompraRecibo")) {
