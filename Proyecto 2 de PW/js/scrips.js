@@ -538,7 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("mensaje-exito").classList.remove("oculto");
             this.reset(); // Limpia los campos después de enviar
         });
-    });
+    };
     
     
     
