@@ -553,13 +553,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Lógica del formulario de empleo
-    if (document.getElementById("empleo-form")) {
-        document.getElementById("empleo-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Evita el envío real del formulario
-            document.getElementById("mensaje-exito").classList.remove("oculto");
-            this.reset(); // Limpia los campos después de enviar
+    document.addEventListener("DOMContentLoaded", function () {
+        const formulario = document.getElementById("empleo-form");
+        const mensajeError = document.getElementById("mensaje-error");
+    
+        formulario.addEventListener("submit", function (event) {
+            event.preventDefault();
+            // Obtener los valores de los campos
+            const nombre = formulario.nombre.value.trim();
+            const email = formulario.email.value.trim();
+            const telefono = formulario.telefono.value.trim();
+            const puesto = formulario.puesto.value;
+            const cv = formulario.cv.files[0];
+            const mensaje = formulario.mensaje.value.trim();
+            // Validar Nombre (entre 3 y 40 caracteres)
+            if (!/^[a-zA-ZÀ-ÿ\s]{3,40}$/.test(nombre)) {
+                mensajeError.textContent = "El nombre debe tener entre 3 y 40 caracteres.";
+                return;
+            }
+            // Validar Email (formato válido)
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                mensajeError.textContent = "El correo electrónico no es válido.";
+                return;
+            }
+            // Validar Teléfono (exactamente 10 dígitos)
+            if (!/^\d{10}$/.test(telefono)) {
+                mensajeError.textContent = "El teléfono debe contener exactamente 10 dígitos.";
+                return;
+            }
+            // Validar Puesto (no vacío)
+            if (puesto === "") {
+                mensajeError.textContent = "Selecciona un puesto.";
+                return;
+            }
+            // Validar CV (solo PDF, máximo 2MB)
+            if (!cv || cv.type !== "application/pdf" || cv.size > 2 * 1024 * 1024) {
+                mensajeError.textContent = "Adjunta un CV en formato PDF y que no supere los 2MB.";
+                return;
+            }
+            // Validar Mensaje (no vacío)
+            if (mensaje === "") {
+                mensajeError.textContent = "El mensaje no puede estar vacío.";
+                return;
+            }
+            // Si todas las validaciones pasan, mostramos mensaje de éxito
+            mensajeError.textContent = "✅ Formulario enviado correctamente.";
+            mensajeError.style.color = "green";
+            formulario.reset(); // Limpia el formulario después de enviarlo
         });
-    }
+    });
+    
+    
+    
 
     // Lógica de la página de recibo (recibo.html)
     if (document.getElementById("resumenCompraRecibo")) {

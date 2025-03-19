@@ -847,6 +847,36 @@ button:hover {
     margin-top: 10px;
 }
 
+/* Mensajes de error */
+.error {
+    color: red;
+    font-size: 14px;
+    display: none; /* Cambia esto a 'none' en vez de oculto por comentario */
+    margin-top: 5px;
+}
+
+.exito {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Ocultar elementos por defecto 
+.oculto {
+    display: none;
+}*/
+
+/* Si el campo es válido */
+.is-valid {
+    border: 2px solid green;
+}
+
+/* Si el campo es inválido */
+.is-invalid {
+    border: 2px solid red;
+}
+
 /*NavBar responsivo del index*/
 @media (min-width: 992px) {
     .navindex {
@@ -891,3 +921,4 @@ button:hover {
     max-height: 20vh; /* Ajusta el valor según tus necesidades */
     border-radius: 10px;
 }
+
