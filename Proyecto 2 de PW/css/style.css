@@ -970,3 +970,9 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;  
 }
+
+.errores{
+    color: red;
+    font-size: 12px;
+    display: none;
+}

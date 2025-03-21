@@ -522,7 +522,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         return "Error";
                     }
                 case "%des":
-                    return num1-(num1*(num2/100));
+                    return num1 - (num1 * (num2 / 100));
                 default:
                     return num2;
             }
@@ -531,51 +531,119 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Lógica del formulario de empleo
-    if (document.getElementById("empleo-form")) {
-        document.getElementById("empleo-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Evita el envío real del formulario
-            document.getElementById("mensaje-exito").classList.remove("oculto");
-            this.reset(); // Limpia los campos después de enviar
+    if (document.getElementById("formulario")) {
+        const formulario = document.getElementById("formulario");
+        const mensajeError = document.getElementById("mensajeError");
+
+        formulario.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Obtener los valores de los campos
+            const nombre = formulario.nombre.value;
+            const apellidos = formulario.apellidos.value;
+            const telefono = formulario.telefono.value;
+            const correo = formulario.correo.value;
+            const fechaNacimiento = formulario.fechaNacimiento.value;
+
+            const errorNombre = document.getElementById("error-nombre");
+            const errorApellidos = document.getElementById("error-apellidos");
+            const errorTelefono = document.getElementById("error-telefono");
+            const errorCorreo = document.getElementById("error-correo");
+            const errorFechaNacimiento = document.getElementById("error-fechaNacimiento");
+
+            let error = true;
+
+            // Validar nombre y apellidos (no pueden estar vacíos)
+            if (nombre.trim() === "") {
+                errorNombre.style.display = "block";
+            }
+            else{
+                errorNombre.style.display = "none";
+                error = false;
+            }
+
+            if (apellidos.trim() === "") {
+                errorApellidos.style.display = "block";
+            }
+            else{
+                errorApellidos.style.display = "none";
+                error = false;
+            }
+
+            // Validar teléfono (###)###-####
+            if (!/^\(\d{3}\)\d{3}-\d{4}$/.test(telefono)) {
+                errorTelefono.style.display = "block";
+            }
+            else{
+                errorTelefono.style.display = "none";
+                error = false;
+            }
+
+            // Validar correo electrónico
+            if (!/^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(correo)) {
+                errorCorreo.style.display = "block";
+            }
+            else{
+                errorCorreo.style.display = "none";
+                error = false;
+            }
+
+            // Validar fecha de nacimiento (AAAA-MM-DD)
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(fechaNacimiento)) {
+                errorFechaNacimiento.style.display = "block";
+            }
+            else{
+                errorFechaNacimiento.style.display = "none";
+                error = false;
+            }
+
+            // Si todas las validaciones pasaron, puedes enviar el formulario o realizar otras acciones aquí
+            if (error == false) {
+                mensajeError.textContent = "Formulario enviado con éxito.";
+            }
+            else {
+                alert("Por favor, corrija los errores en el formulario.");
+            }
         });
-    };
-    
-    
-    
+    }
 
-    // Lógica de la página de recibo (recibo.html)
-    if (document.getElementById("resumenCompraRecibo")) {
-        const carrito = JSON.parse(localStorage.getItem("carrito"));
-        const total = sessionStorage.getItem("total");
 
-        const resumenCompraRecibo = document.getElementById("resumenCompraRecibo");
-        const totalRecibo = document.getElementById("totalRecibo");
 
-        if (carrito && total) {
-            carrito.forEach((item) => {
-                const fila = document.createElement("tr");
-                fila.innerHTML = `
+
+// Lógica de la página de recibo (recibo.html)
+if (document.getElementById("resumenCompraRecibo")) {
+    const carrito = JSON.parse(localStorage.getItem("carrito"));
+    const total = sessionStorage.getItem("total");
+
+    const resumenCompraRecibo = document.getElementById("resumenCompraRecibo");
+    const totalRecibo = document.getElementById("totalRecibo");
+
+    if (carrito && total) {
+        carrito.forEach((item) => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
                     <td><img src="${item.producto.imagen}" class="img-producto-carrito"></td>
                     <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
                 `;
-                resumenCompraRecibo.appendChild(fila);
-            });
-            totalRecibo.textContent = total;
-        } else {
-            resumenCompraRecibo.innerHTML = "<tr><td colspan='3'>No hay datos de compra.</td></tr>";
-            totalRecibo.textContent = "$0";
-        }
-
-        const botonFinalizarCompra = document.getElementById("finalizarCompra");
-
-        botonFinalizarCompra.addEventListener("click", function () {
-
-            alert("Compra completada. Gracias por su compra.");
-            localStorage.removeItem("carrito");
-            sessionStorage.removeItem("total");
-            window.location.href = "tienda.html";
-
+            resumenCompraRecibo.appendChild(fila);
         });
+        totalRecibo.textContent = total;
+    } else {
+        resumenCompraRecibo.innerHTML = "<tr><td colspan='3'>No hay datos de compra.</td></tr>";
+        totalRecibo.textContent = "$0";
     }
+
+    const botonFinalizarCompra = document.getElementById("finalizarCompra");
+
+    botonFinalizarCompra.addEventListener("click", function () {
+
+        alert("Compra completada. Gracias por su compra.");
+        localStorage.removeItem("carrito");
+        sessionStorage.removeItem("total");
+        window.location.href = "tienda.html";
+
+    });
+}
 });
