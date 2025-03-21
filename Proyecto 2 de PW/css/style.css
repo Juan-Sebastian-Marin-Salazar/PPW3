@@ -355,24 +355,16 @@ h1 {
     position: fixed;
     top: 6em;
     right: 1em;
-    padding: 5px;
+    padding: 10px;
     border-radius: 9px;
-
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
 }
 .fixedimg {
     max-width: 100%;
     height: auto;
 }
-.calculator {
-    background-color: antiquewhite;
-    border-radius: 8px;
-    width: 200px;
-    padding: 10%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    }
     
     .calcDisplay {
     background-color: antiquewhite;
@@ -940,10 +932,12 @@ button:hover {
     padding: 20px;
     display: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
 }
     
 .display {
-    background-color: #d7462d;
+    background-color: #683838;
     color: rgb(255, 255, 255);
     font-size: 24px;
     width: 100%;
