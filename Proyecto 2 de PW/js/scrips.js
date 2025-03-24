@@ -554,16 +554,18 @@ document.addEventListener("DOMContentLoaded", function () {
             let error = true;
 
             // Validar nombre y apellidos (no pueden estar vacíos)
-            if (nombre.trim() === "") {
+            if (nombre.trim() === "" || !/[a-zA-Z]{3,}/.test(nombre) || /[\d-_@#]/.test(nombre)) {
                 errorNombre.style.display = "block";
+                error = true;
             }
             else{
                 errorNombre.style.display = "none";
                 error = false;
             }
 
-            if (apellidos.trim() === "") {
+            if (apellidos.trim() === "" || !/[a-zA-Z]{3,}/.test(apellidos) || /[\d-_@#]/.test(apellidos)) {
                 errorApellidos.style.display = "block";
+                error = true;
             }
             else{
                 errorApellidos.style.display = "none";
@@ -573,6 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Validar teléfono (###)###-####
             if (!/^\(\d{3}\)\d{3}-\d{4}$/.test(telefono)) {
                 errorTelefono.style.display = "block";
+                error = true;
             }
             else{
                 errorTelefono.style.display = "none";
@@ -582,6 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Validar correo electrónico
             if (!/^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(correo)) {
                 errorCorreo.style.display = "block";
+                error = true;
             }
             else{
                 errorCorreo.style.display = "none";
@@ -591,6 +595,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Validar fecha de nacimiento (AAAA-MM-DD)
             if (!/^\d{4}-\d{2}-\d{2}$/.test(fechaNacimiento)) {
                 errorFechaNacimiento.style.display = "block";
+                error = true;
             }
             else{
                 errorFechaNacimiento.style.display = "none";
