@@ -551,7 +551,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const errorCorreo = document.getElementById("error-correo");
             const errorFechaNacimiento = document.getElementById("error-fechaNacimiento");
 
-            let error = true;
+            let error = false;
 
             // Validar nombre y apellidos (no pueden estar vacíos)
             if (nombre.trim() === "" || !/[a-zA-Z]{3,}/.test(nombre) || /[\d-_@#]/.test(nombre)) {
@@ -560,7 +560,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else{
                 errorNombre.style.display = "none";
-                error = false;
             }
 
             if (apellidos.trim() === "" || !/[a-zA-Z]{3,}/.test(apellidos) || /[\d-_@#]/.test(apellidos)) {
@@ -569,7 +568,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else{
                 errorApellidos.style.display = "none";
-                error = false;
             }
 
             // Validar teléfono (###)###-####
@@ -579,7 +577,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else{
                 errorTelefono.style.display = "none";
-                error = false;
             }
 
             // Validar correo electrónico
@@ -589,7 +586,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else{
                 errorCorreo.style.display = "none";
-                error = false;
             }
 
             // Validar fecha de nacimiento (AAAA-MM-DD)
@@ -599,7 +595,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             else{
                 errorFechaNacimiento.style.display = "none";
-                error = false;
             }
 
             // Si todas las validaciones pasaron, puedes enviar el formulario o realizar otras acciones aquí
