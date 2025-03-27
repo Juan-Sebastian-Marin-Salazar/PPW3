@@ -533,7 +533,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lógica del formulario de empleo
     if (document.getElementById("formulario")) {
         const formulario = document.getElementById("formulario");
-        const mensajeError = document.getElementById("mensajeError");
+        const mensaje = document.getElementById("mensaje");
 
         formulario.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -599,7 +599,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Si todas las validaciones pasaron, puedes enviar el formulario o realizar otras acciones aquí
             if (error == false) {
-                mensajeError.textContent = "Formulario enviado con éxito.";
+                mensaje.textContent = "Formulario enviado con éxito.";
             }
             else {
                 alert("Por favor, corrija los errores en el formulario.");
