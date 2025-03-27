@@ -558,7 +558,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorNombre.style.display = "block";
                 error = true;
             }
-            else{
+            else {
                 errorNombre.style.display = "none";
             }
 
@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorApellidos.style.display = "block";
                 error = true;
             }
-            else{
+            else {
                 errorApellidos.style.display = "none";
             }
 
@@ -575,7 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorTelefono.style.display = "block";
                 error = true;
             }
-            else{
+            else {
                 errorTelefono.style.display = "none";
             }
 
@@ -584,7 +584,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorCorreo.style.display = "block";
                 error = true;
             }
-            else{
+            else {
                 errorCorreo.style.display = "none";
             }
 
@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorFechaNacimiento.style.display = "block";
                 error = true;
             }
-            else{
+            else {
                 errorFechaNacimiento.style.display = "none";
             }
 
@@ -610,40 +610,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Lógica de la página de recibo (recibo.html)
-if (document.getElementById("resumenCompraRecibo")) {
-    const carrito = JSON.parse(localStorage.getItem("carrito"));
-    const total = sessionStorage.getItem("total");
+    // Lógica de la página de recibo (recibo.html)
+    if (document.getElementById("resumenCompraRecibo")) {
+        const carrito = JSON.parse(localStorage.getItem("carrito"));
+        const total = sessionStorage.getItem("total");
 
-    const resumenCompraRecibo = document.getElementById("resumenCompraRecibo");
-    const totalRecibo = document.getElementById("totalRecibo");
+        const resumenCompraRecibo = document.getElementById("resumenCompraRecibo");
+        const totalRecibo = document.getElementById("totalRecibo");
 
-    if (carrito && total) {
-        carrito.forEach((item) => {
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
+        if (carrito && total) {
+            carrito.forEach((item) => {
+                const fila = document.createElement("tr");
+                fila.innerHTML = `
                     <td><img src="${item.producto.imagen}" class="img-producto-carrito"></td>
                     <td>${item.producto.nombre}</td>
                     <td>${item.cantidad}</td>
                     <td>$${item.producto.precio * item.cantidad}</td>
                 `;
-            resumenCompraRecibo.appendChild(fila);
+                resumenCompraRecibo.appendChild(fila);
+            });
+            totalRecibo.textContent = total;
+        } else {
+            resumenCompraRecibo.innerHTML = "<tr><td colspan='3'>No hay datos de compra.</td></tr>";
+            totalRecibo.textContent = "$0";
+        }
+
+        const botonFinalizarCompra = document.getElementById("finalizarCompra");
+
+        botonFinalizarCompra.addEventListener("click", function () {
+
+            alert("Compra completada. Gracias por su compra.");
+            localStorage.removeItem("carrito");
+            sessionStorage.removeItem("total");
+            window.location.href = "tienda.html";
+
         });
-        totalRecibo.textContent = total;
-    } else {
-        resumenCompraRecibo.innerHTML = "<tr><td colspan='3'>No hay datos de compra.</td></tr>";
-        totalRecibo.textContent = "$0";
     }
-
-    const botonFinalizarCompra = document.getElementById("finalizarCompra");
-
-    botonFinalizarCompra.addEventListener("click", function () {
-
-        alert("Compra completada. Gracias por su compra.");
-        localStorage.removeItem("carrito");
-        sessionStorage.removeItem("total");
-        window.location.href = "tienda.html";
-
-    });
-}
 });
